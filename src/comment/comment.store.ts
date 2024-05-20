@@ -1,8 +1,9 @@
 import { signalStore } from "@ngrx/signals";
-import { BaseEntityStore } from "../base/base-entity.store";
+import { baseEntityStore } from "../base/base-entity.store";
+import { Comment } from "./comment";
 import { CommentService } from "./comment.service";
 
-export const commentStore = signalStore(
+export const CommentStore = signalStore(
   {providedIn: 'root'},
-  BaseEntityStore<Comment>(CommentService)
+  baseEntityStore<Comment, CommentService>(CommentService)
 );

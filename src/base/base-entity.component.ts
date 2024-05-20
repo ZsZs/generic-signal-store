@@ -1,8 +1,18 @@
-import { Component, InjectionToken, OnInit, effect, inject } from "@angular/core";
+import {Component, InjectionToken, OnInit, effect, inject, ProviderToken, Type} from "@angular/core";
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BaseEntity } from "./base-entity";
 import { BaseEntityService } from "./base-entity.service";
-import { BaseEntityStore } from "./base-entity.store";
+import { baseEntityStore } from "./base-entity.store";
+import {signalStore} from "@ngrx/signals";
+import {Comment} from "../comment/comment";
+import {CommentService} from "../comment/comment.service";
+
+/*
+export const componentStore = (repository: Type<BaseEntityService<BaseEntity>>) => signalStore(
+    {providedIn: 'root'},
+    baseEntityStore(repository)
+);
+*/
 
 @Component({ template: '' })
 export abstract class BaseEntityComponent<Entity extends BaseEntity> implements OnInit {
@@ -11,8 +21,8 @@ export abstract class BaseEntityComponent<Entity extends BaseEntity> implements 
   protected formGroup!: FormGroup;
   protected store;
 
-  constructor(repository: BaseEntityService<Entity>) {
-    this.store = inject( BaseEntityStore(new InjectionToken<BaseEntityService<Entity>>('')));
+  protected constructor(repository: Type<BaseEntityService<Entity>>) {
+    this.store = inject( baseEntityStore( repository ));
     this.store.loadAll();
     this.registerEffects();
   }
@@ -30,7 +40,7 @@ export abstract class BaseEntityComponent<Entity extends BaseEntity> implements 
   // region protected, private helper methods
   protected registerEffects(): void {
     effect( () => {
-      this.entity = this.store.selectedEntity();
+//      this.entity = this.store.selectedEntity();
     })
   }
   // endregion
