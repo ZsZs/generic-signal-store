@@ -1,6 +1,6 @@
 import { Component, effect, inject } from '@angular/core';
 import { BaseEntityComponent } from '@generic-signal-store/base';
-import { Comment, CommentService, CommentStore } from '@generic-signal-store/comment-domain';
+import { Comment, CommentStore } from '@generic-signal-store/comment-domain';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -15,8 +15,8 @@ export class CommentListComponent extends BaseEntityComponent<Comment> {
   private readonly store = inject(CommentStore);
   comments: Comment[] = [];
 
-  constructor(dataService: CommentService) {
-    super(dataService);
+  constructor() {
+    super();
     this.store.loadAll();
     this.registerEffects();
   }

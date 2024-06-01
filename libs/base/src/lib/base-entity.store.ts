@@ -20,10 +20,7 @@ export interface EntityStoreState<Entity extends BaseEntity> {
   error: string;
 }
 
-export function baseEntityStore<
-  Entity extends BaseEntity,
-  DataService extends BaseEntityService<Entity>
->(dataServiceType: Type<DataService>) {
+export function baseEntityStore<Entity extends BaseEntity, DataService extends BaseEntityService<Entity>>(dataServiceType: Type<DataService>) {
   return signalStoreFeature(
     withState<EntityStoreState<Entity>>({
       entities: [],

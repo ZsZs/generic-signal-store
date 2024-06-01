@@ -30,7 +30,7 @@ export abstract class BaseEntityComponent<Entity extends BaseEntity> implements 
   protected formBuilder = inject(FormBuilder);
   protected formGroup!: FormGroup;
 
-  protected constructor(repository: BaseEntityService<Entity>) {
+  protected constructor() {
 //    this.store = inject(baseEntityStore(repository));
 //    this.store.loadAll();
   }
