@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="NxAngularConfigService" workspaceLocation="file://$PROJECT_DIR$/nx.json">
+    <projects>
+      <project name="base" file="file://$PROJECT_DIR$/libs/base/project.json" />
+      <project name="comment-domain" file="file://$PROJECT_DIR$/libs/comment/domain/project.json" />
+      <project name="comment-feature" file="file://$PROJECT_DIR$/libs/comment/feature/project.json" />
+      <project name="demo" file="file://$PROJECT_DIR$/apps/demo/project.json" />
+    </projects>
+  </component>
+</project>

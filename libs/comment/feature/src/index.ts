@@ -1,0 +1,1 @@
+export { CommentListComponent } from './lib/comment-list.component'
