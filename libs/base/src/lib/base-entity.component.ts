@@ -1,15 +1,6 @@
-import {
-  Component,
-  InjectionToken,
-  OnInit,
-  effect,
-  inject,
-  ProviderToken,
-  Type,
-} from '@angular/core';
+import { Component, OnInit, inject, } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BaseEntity } from './base-entity';
-import { BaseEntityService } from './base-entity.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 

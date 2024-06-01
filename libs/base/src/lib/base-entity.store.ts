@@ -1,13 +1,7 @@
-import { ProviderToken, inject, Type } from '@angular/core';
+import { inject, Type } from '@angular/core';
 import { BaseEntity } from './base-entity';
 import { BaseEntityService } from './base-entity.service';
-import {
-  patchState,
-  signalStoreFeature,
-  type,
-  withMethods,
-  withState,
-} from '@ngrx/signals';
+import { patchState, signalStoreFeature, withMethods, withState, } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
 import { tapResponse } from '@ngrx/component-store';
