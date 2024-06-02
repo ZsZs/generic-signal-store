@@ -1,4 +1,4 @@
-import { inject, ProviderToken, Type } from '@angular/core';
+import { inject, ProviderToken } from '@angular/core';
 import { BaseEntity } from './base-entity';
 import { BaseEntityService } from './base-entity.service';
 import { patchState, signalStoreFeature, withMethods, withState, } from '@ngrx/signals';

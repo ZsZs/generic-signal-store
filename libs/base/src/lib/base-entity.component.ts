@@ -1,4 +1,4 @@
-import { Component, effect, Inject, inject, OnInit, ProviderToken, Type } from '@angular/core';
+import { Component, effect, Inject, inject, OnInit, ProviderToken } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntity } from './base-entity';
 import { CommonModule } from '@angular/common';
