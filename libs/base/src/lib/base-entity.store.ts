@@ -1,4 +1,4 @@
-import { inject, Type } from '@angular/core';
+import { inject, ProviderToken, Type } from '@angular/core';
 import { BaseEntity } from './base-entity';
 import { BaseEntityService } from './base-entity.service';
 import { patchState, signalStoreFeature, withMethods, withState, } from '@ngrx/signals';
@@ -14,7 +14,7 @@ export interface EntityStoreState<Entity extends BaseEntity> {
   error: string;
 }
 
-export function baseEntityStore<Entity extends BaseEntity, DataService extends BaseEntityService<Entity>>(dataServiceType: Type<DataService>) {
+export function baseEntityStore<Entity extends BaseEntity, DataService extends BaseEntityService<Entity>>(dataServiceType: ProviderToken<DataService>) {
   return signalStoreFeature(
     withState<EntityStoreState<Entity>>({
       entities: [],
@@ -42,3 +42,5 @@ export function baseEntityStore<Entity extends BaseEntity, DataService extends B
     }))
   );
 }
+
+export type BaseEntityStore = typeof baseEntityStore;

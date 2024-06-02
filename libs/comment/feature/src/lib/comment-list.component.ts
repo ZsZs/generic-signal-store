@@ -1,7 +1,8 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, Inject, Type } from '@angular/core';
 import { BaseEntityComponent } from '@generic-signal-store/base';
-import { Comment, CommentStore } from '@generic-signal-store/comment-domain';
+import { Comment } from '@generic-signal-store/comment-domain';
 import { CommonModule } from '@angular/common';
+import { CommentService } from '../../../domain/src/lib/comment.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -9,21 +10,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./comment-list.component.css'],
   standalone: true,
   imports: [CommonModule],
-  providers: [],
+  providers: [{provide: "BASE_ENTITY_SERVICE", useValue: CommentService}],
 })
 export class CommentListComponent extends BaseEntityComponent<Comment> {
-  private readonly store = inject(CommentStore);
-  comments: Comment[] = [];
 
-  constructor() {
-    super();
-    this.store.loadAll();
-    this.registerEffects();
-  }
-
-  protected registerEffects(): void {
-    effect(() => {
-      this.comments = this.store.entities();
-    });
+  constructor(@Inject("BASE_ENTITY_SERVICE") protected dataService: Type<CommentService>) {
+    super(dataService);
   }
 }
